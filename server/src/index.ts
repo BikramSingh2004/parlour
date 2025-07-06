@@ -21,7 +21,9 @@ const srv = http.createServer(app);
 
 app.use(
   cors({
-    origin: ["https://parlour-mu.vercel.app"], // frontend URL
+    origin: ["https://parlour-mu.vercel.app"],
+    // origin: ["http://localhost:3000"], // frontend URL
+    // frontend URL
     credentials: true, // allow cookies, auth headers
   })
 );

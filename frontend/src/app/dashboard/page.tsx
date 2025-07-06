@@ -308,16 +308,22 @@ export default function DashPage() {
           <CardTitle className="text-xl">Live Attendance</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-2">
-          {logs.map((l, i) => (
-            <div
-              key={i}
-              className="border border-gray-600 p-2 rounded text-white"
-            >
-              <div>Emp: {l.empId}</div>
-              <div>Action: {l.action}</div>
-              <div>{new Date(l.time).toLocaleString()}</div>
-            </div>
-          ))}
+          {logs.map((l, i) => {
+            const empName =
+              emp.find((e) => e._id === l.empId)?.name || "Unknown";
+            return (
+              <div
+                key={i}
+                className="border border-gray-600 p-2 rounded text-white"
+              >
+                <div>
+                  Emp: {empName} ({l.empId})
+                </div>
+                <div>Action: {l.action}</div>
+                <div>{new Date(l.time).toLocaleString()}</div>
+              </div>
+            );
+          })}
         </CardContent>
       </Card>
     </div>
