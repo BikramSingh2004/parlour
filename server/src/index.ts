@@ -18,7 +18,14 @@ dotenv.config();
 const app = express();
 const srv = http.createServer(app);
 
-app.use(cors());
+
+app.use(
+  cors({
+    origin: ["https://parlour-mu.vercel.app/"], // frontend URL
+    credentials: true, // allow cookies, auth headers
+  })
+);
+
 app.use(express.json());
 app.use("/api/auth", aRoute);
 app.use("/api/employees", eRoute);
